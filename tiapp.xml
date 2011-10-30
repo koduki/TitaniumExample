@@ -31,4 +31,7 @@
 	</android>
 	<modules>
 	</modules>
+    <plugins>
+        <plugin version="1.0">ti_coffee_plugin></plugin>
+    </plugins>
 </ti:app>
