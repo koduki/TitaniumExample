@@ -1,0 +1,3 @@
+./run_emu.sh
+./build.sh
+./deploy.sh
