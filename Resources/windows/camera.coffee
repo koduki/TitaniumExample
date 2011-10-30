@@ -13,7 +13,7 @@ Titanium.Media.showCamera
 
   error: (error) ->
           dialog = Titanium.UI.createAlertDialog
-            title: 'Camera error'
+            title: 'Camera error2'
 
           if Titanium.Media.NO_CAMERA == error.code
                   dialog.setMessage('Device dose not have camera.')

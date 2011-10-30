@@ -1,8 +1,8 @@
-#appname: ilise
-#publisher: pascalm3
-#url: aaa
-#image: appicon.png
-#appid: co.co.jp
-#desc: undefined
-#type: mobile
-#guid: 42520ecd-4753-434c-a200-17f4df231740
+#appname:ilise
+#publisher:not specified
+#url:http://test.com
+#image:appicon.png
+#appid:co.co.jp
+#desc:not specified
+#type:mobile
+#guid:42520ecd-4753-434c-a200-17f4df231740

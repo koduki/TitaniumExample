@@ -5,7 +5,7 @@ locationView = Titanium.Map.createView
    mapType: Titanium.Map.STANDARD_TYPE
    region:
         latitude:35.658609
-        longitude:139.745447
+        longitude:139.74544
         latitudeDelta: 0.8
         longitudeDelta:0.8
    animate:true
