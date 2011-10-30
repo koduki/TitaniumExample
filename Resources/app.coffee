@@ -16,7 +16,7 @@ tab2 = Titanium.UI.createTab
       Titanium.UI.createWindow
          url:"windows/map.js"
 
-tabGroup.addTab tab1
+#tabGroup.addTab tab1
 tabGroup.addTab tab2
 
 tabGroup.open()

@@ -1,18 +1,42 @@
-currentWindow = Titanium.UI.currentWindow
+currentWindow = Ti.UI.currentWindow
 
 Ti.Geolocation.preferredProvider = "gps"
-locationView = Titanium.Map.createView
-   mapType: Titanium.Map.STANDARD_TYPE
-   region:
+mapView = Ti.Map.createView
+    mapType: Ti.Map.STANDARD_TYPE
+    region:
         latitude:35.658609
         longitude:139.74544
-        latitudeDelta: 0.8
-        longitudeDelta:0.8
-   animate:true
-   regionFit:true
-   userLocation:true
+        latitudeDelta: 0.001
+        longitudeDelta:0.001
+    animate:true
+    regionFit:true
+    userLocation:true
+    draggable:true
+currentWindow.add mapView
 
-currentWindow.add locationView
+pin1 = Ti.Map.createAnnotation
+    latitude:35.6586
+    longitude:139.745
+    title:"Pin1"
+    subtitle:"sub Title"
+    pincolor:Ti.Map.ANNOTATION_RED 
+
+mapView.addEventListener 'click', (e) ->
+    if(e.annotation)
+        Ti.API.info(e.title)
+        win = Ti.UI.createWindow
+            backgroundColor:'red'
+            hasChild:true
+
+        label1 = Ti.UI.createLabel
+            text:"title: Item1"
+            top:10
+        win.add label1
+
+        Ti.UI.currentTab.open win,
+            animated:true
+
+mapView.addAnnotation pin1
 
 label1 = Ti.UI.createLabel
    left:45
@@ -24,7 +48,7 @@ label1 = Ti.UI.createLabel
 currentWindow.add label1
 
 getCurrentLocation = (e) ->
-        locationView.setLocation
+        mapView.setLocation
            latitude:e.coords.latitude
            longitude:e.coords.longitude
            latitudeDelta: 0.04
@@ -51,4 +75,5 @@ Ti.Android.currentActivity.onCreateOptionsMenu = (e) ->
            Ti.Geolocation.getCurrentPosition( getCurrentLocation)
 
    menu2.addEventListener "click", (e) ->
-           Ti.Geolocation.removeEventListener("location", getCurrentLocation)
+           mapView.zoom(1)
+           #Ti.Geolocation.removeEventListener("location", getCurrentLocation)
