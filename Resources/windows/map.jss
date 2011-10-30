@@ -1,0 +1,3 @@
+#itemDetailWin {
+    background-color: "#fff";
+}
