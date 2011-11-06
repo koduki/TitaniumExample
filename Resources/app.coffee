@@ -1,23 +1,32 @@
-Titanium.UI.setBackgroundColor '#000'
+Ti.UI.setBackgroundColor '#000'
 
-tabGroup = Titanium.UI.createTabGroup()
+tabGroup = Ti.UI.createTabGroup()
 
-tab1 = Titanium.UI.createTab
+searchTab = Ti.UI.createTab
    icon:'KS_nav_views.png'
-   title:'カメラ'
+   title:'検索'
    window:
-      Titanium.UI.createWindow
-         url:"windows/camera.js"
+      Ti.UI.createWindow
+         url:"windows/search.js"
 
-tab2 = Titanium.UI.createTab
+favoritTab = Ti.UI.createTab
+   icon:'KS_nav_views.png'
+   title:'お気に入り'
+   window:
+      Ti.UI.createWindow
+         url:"windows/favorit.js"
+         
+mapTab = Ti.UI.createTab
    icon:'KS_nav_views.png'
    title:'地図(Map)'
    window:
-      Titanium.UI.createWindow
+      Ti.UI.createWindow
          url:"windows/map.js"
 
 #tabGroup.addTab tab1
-tabGroup.addTab tab2
+tabGroup.addTab searchTab
+tabGroup.addTab favoritTab
+tabGroup.addTab mapTab
 
 tabGroup.open()
 
