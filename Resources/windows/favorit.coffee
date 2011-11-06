@@ -1,4 +1,4 @@
-currentWindow = Ti.UI.currentWindow
+window = Ti.UI.currentWindow
 rows = [
     {title:'Row 1', hasChild:true},
     {title:'Row 2', hasDetail:true},
@@ -6,13 +6,109 @@ rows = [
     {title:'Row 4'}
 ]
 
-itemView = Ti.UI.createTableView
-    data: rows
-    
-itemView.addEventListener 'click', (e) -> 
-    index    = e.index
-    section  = e.section
-    row      = e.row
-    rowdata  = e.rowData
+window.barColor = '#385292'
 
-currentWindow.add itemView
+searchBar = Ti.UI.createSearchBar
+    barColor:'#285292'
+    showCancel:false
+
+rowData = []
+# header
+headerRow = Ti.UI.createTableViewRow
+    backgroundColor:'#576996'
+    selectedBackgroundColor:'#385292'
+    height:40
+
+clickLabel = Ti.UI.createLabel
+    text:'Click different parts of the row'
+    color:'#fff'
+    textAlign:'center'
+    font:{fontSize:14} 
+    width:'auto'
+    height:'auto'
+
+headerRow.className = 'header'
+headerRow.add clickLabel
+rowData.push headerRow
+
+layout = (c) ->
+    row = Ti.UI.createTableViewRow
+        selectedBackgroundColor:'#fff'
+        height:100
+        className:'datarow'
+   
+    # add image
+    photo = Ti.UI.createView
+        backgroundImage:'../KS_nav_views.png'
+        top:5
+        left:10
+        width:50
+        height:50
+    photo.rowNum = c
+    photo.addEventListener 'click', (e) ->
+        Ti.API.info 'clikc it!'
+    row.add photo
+    
+    # add label
+    user = Ti.UI.createLabel
+        color:'#576996'
+        font:{fontSize:16, fontWeight:'bold', fontFamily:'Arial'}
+        left:70
+        top:2
+        height:30
+        width:200
+        text:'Fred Smith ' + c
+    user.rowNum = c
+    user.addEventListener 'click', (e) ->
+        Ti.API.info 'click it!'
+    row.add user
+
+    # add label2
+    comment = Ti.UI.createLabel
+        color:'#222'
+        font:{fontSize:16, fontWeight:'normal', fontFamily:'Arial'}
+        left:70
+        top:21
+        height:50
+        width:200
+        text:'Got some fresh fruit, conducted some business, took a nap'
+    row.add comment
+
+    # add View
+    calendar = Ti.UI.createView
+        backgroundImage:'../KS_nav_views.png'
+        bottom:2
+        left:70
+        width:32
+        height:32
+    calendar.rowNum = c
+    calendar.addEventListener 'click', (e) ->
+        Ti.API.info 'click it!'
+    row.add calendar
+
+    # add Button
+    button = Ti.UI.createView
+        backgroundImage:'../KS_nav_views.png'
+        top:35
+        right:5
+        width:36
+        height:34
+    button.rowNum = c
+    button.addEventListener 'click', (e) ->
+        Ti.API.info 'click it!'
+    row.add button
+       
+    # add Label2
+    date = Ti.UI.createLabel
+        text:'posted on 3/11'
+    row.add date
+    
+    rowData.push row
+
+layout c for c in [1..50]
+
+tableView = Titanium.UI.createTableView
+    data:rowData
+    search: searchBar
+ 
+window.add tableView
