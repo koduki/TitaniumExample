@@ -1,20 +1,11 @@
 window = Ti.UI.currentWindow
-rows = [
-    {title:'Row 1', hasChild:true},
-    {title:'Row 2', hasDetail:true},
-    {title:'Row 3', hasCheck:true},
-    {title:'Row 4'}
-]
-
 window.barColor = '#385292'
 
-searchBar = Ti.UI.createSearchBar
-    barColor:'#285292'
-    showCancel:false
-
 rowData = []
+
 # header
 headerRow = Ti.UI.createTableViewRow
+    className:'header'
     backgroundColor:'#576996'
     selectedBackgroundColor:'#385292'
     height:40
@@ -26,12 +17,11 @@ clickLabel = Ti.UI.createLabel
     font:{fontSize:14} 
     width:'auto'
     height:'auto'
-
-headerRow.className = 'header'
+    
 headerRow.add clickLabel
 rowData.push headerRow
 
-layout = (c) ->
+itemsView = (c) ->
     row = Ti.UI.createTableViewRow
         selectedBackgroundColor:'#fff'
         height:100
@@ -105,10 +95,9 @@ layout = (c) ->
     
     rowData.push row
 
-layout c for c in [1..50]
+itemsView i for i in [1..50]
 
 tableView = Titanium.UI.createTableView
     data:rowData
-    search: searchBar
  
 window.add tableView

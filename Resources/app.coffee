@@ -9,12 +9,12 @@ searchTab = Ti.UI.createTab
       Ti.UI.createWindow
          url:"windows/search.js"
 
-favoritTab = Ti.UI.createTab
+favoriteTab = Ti.UI.createTab
    icon:'KS_nav_views.png'
    title:'お気に入り'
    window:
       Ti.UI.createWindow
-         url:"windows/favorit.js"
+         url:"windows/favorite.js"
          
 mapTab = Ti.UI.createTab
    icon:'KS_nav_views.png'
@@ -25,7 +25,7 @@ mapTab = Ti.UI.createTab
 
 #tabGroup.addTab tab1
 tabGroup.addTab searchTab
-tabGroup.addTab favoritTab
+tabGroup.addTab favoriteTab
 tabGroup.addTab mapTab
 
 tabGroup.open()
