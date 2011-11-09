@@ -18,12 +18,7 @@ clickLabel = Ti.UI.createLabel
     font:{fontSize:14} 
     width:'auto'
     height:'auto'
-    
 headerRow.add clickLabel
-
-
-rowData = []
-rowData.push headerRow
 
 buildView = (i) ->    
   new ItemRecordView
@@ -32,9 +27,9 @@ buildView = (i) ->
     text:"Hello World"
     iconImage:'../KS_nav_views.png'
     buttonImage:'../KS_nav_ui.png'
-itemRecords = buildView i for i in [1..50]
+itemRecords = (buildView i for i in [1..50])
 
 tableView = Titanium.UI.createTableView
-    data:rowData.concat(itemRecords)
+    data: [headerRow].concat(itemRecords)
  
 window.add tableView
