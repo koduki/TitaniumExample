@@ -1,4 +1,6 @@
 Ti.include 'record_view.js'
+Ti.include '../models/itemDao.js'
+
 window = Ti.UI.currentWindow
 
 
@@ -20,14 +22,16 @@ clickLabel = Ti.UI.createLabel
     height:'auto'
 headerRow.add clickLabel
 
-buildView = (i) ->    
+buildView = (item) ->    
   new ItemRecordView
-    index:i
-    title:"Title " + i
-    text:"Hello World"
-    iconImage:'../KS_nav_views.png'
+    data:item
+    title:item.name
+    text:item.description
+    iconImage:item.image
     buttonImage:'../KS_nav_ui.png'
-itemRecords = (buildView i for i in [1..50])
+    
+items = FavoriteItemDao.find()
+itemRecords = (buildView item for item in items)
 
 tableView = Titanium.UI.createTableView
     data: [headerRow].concat(itemRecords)

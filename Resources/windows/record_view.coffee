@@ -1,9 +1,20 @@
 class ItemRecordView
+  onClick: () ->
+      win = Ti.UI.createWindow
+              hasChild:true
+              url:"show.js"
+              data:@data
+      Ti.UI.currentTab.open win,
+            animated:true
+  
   constructor:(params) ->
+    @data = params.data
+
     row = Ti.UI.createTableViewRow
         className:'datarow'
         selectedBackgroundColor:'#fff'
         height:100
+    row.addEventListener 'click', (e) => @onClick()
 
     # add image
     mainIcon = Ti.UI.createView
@@ -13,8 +24,7 @@ class ItemRecordView
         width:50
         height:50
     mainIcon.rowNum = params.index
-    mainIcon.addEventListener 'click', (e) ->
-        Ti.API.info 'clikc it!'
+    mainIcon.addEventListener 'click', (e) => @onClick()
     row.add mainIcon
     
     # add label
@@ -27,8 +37,7 @@ class ItemRecordView
         width:200
         text:params.title
     title.rowNum = params.index
-    title.addEventListener 'click', (e) ->
-        Ti.API.info 'click it!'
+    title.addEventListener 'click', (e) => @onClick()
     row.add title
 
     # add Button
@@ -39,13 +48,13 @@ class ItemRecordView
         width:36
         height:34
     button.rowNum = params.index
-    button.addEventListener 'click', (e) ->
-        Ti.API.info 'click it!'
+    button.addEventListener 'click', (e) => @onClick()
     row.add button
        
     # add Label2
     message = Ti.UI.createLabel
         text:params.text
+    message.addEventListener 'click', (e) => @onClick()
     row.add message
     
     return row
