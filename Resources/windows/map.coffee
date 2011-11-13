@@ -16,25 +16,8 @@ currentWindow.add mapView
 
 pin1 = Ti.Map.createAnnotation
     latitude:35.6586
-    longitude:139.745
-    title:"Pin1"
-    subtitle:"sub Title"
-    pincolor:Ti.Map.ANNOTATION_RED 
-
-mapView.addEventListener 'click', (e) ->
-    if(e.annotation)
-        Ti.API.info(e.title)
-        win = Ti.UI.createWindow
-            backgroundColor:'red'
-            hasChild:true
-
-        label1 = Ti.UI.createLabel
-            text:"title: Item1"
-            top:10
-        win.add label1
-
-        Ti.UI.currentTab.open win,
-            animated:true
+    long animated:true
+  
 
 mapView.addAnnotation pin1
 

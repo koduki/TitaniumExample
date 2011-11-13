@@ -21,7 +21,7 @@ mapTab = Ti.UI.createTab
    title:'地図(Map)'
    window:
       Ti.UI.createWindow
-         url:"windows/map.js"
+         url:"windows/navi.js"
 
 #tabGroup.addTab tab1
 tabGroup.addTab searchTab
