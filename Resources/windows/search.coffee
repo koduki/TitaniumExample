@@ -75,7 +75,7 @@ row.add searchButton
 headerRow.add Titanium.UI.createTableView
     data: [row]
 
-buildView = (item) ->    
+buildView = (item) ->
   new ItemRecordView
     data:item
     title:item.name
@@ -87,6 +87,6 @@ items = FavoriteItemDao.find()
 itemRecords = (buildView item for item in items)
 
 tableView = Titanium.UI.createTableView
-    data: [headerRow].concat(itemRecords)
+    data: [row].concat(itemRecords)
 
 window.add tableView
